@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/adrien/Bureau/ros_ws_rasp/devel/lib/python3/dist-packages",
+        "/home/adrien/Bureau/ros_ws_theTank/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}
