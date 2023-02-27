@@ -5,4 +5,6 @@
     <param name="baud" value="115200"/>
   </node>
   <node pkg="robot_dynamic_param" type="server" name="robot_dynamic_param" />
+  <node pkg="tf" type="static_transform_publisher" name="laserscan_broadcaster" args="0 0 0 0 0 1 0 base_link laser_frame 100" />
+  <node pkg="rplidar_ros" type="rplidarNode" name="rplidar_handler" />
 </launch>
