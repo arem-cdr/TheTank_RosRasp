@@ -45,7 +45,7 @@ void callback(robot_dynamic_param::paramConfig &config, uint32_t level) {
 	    break;
 
 	  case reset_odo:
-	    msg_reset_odo = config.reset_odo;
+	    msg_reset_odo.data = config.reset_odo;
 	    pub_reset_odo->publish(msg_reset_odo);
 	    break;
 	  case tuning_mode:
@@ -65,8 +65,7 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "robot_dynamic_param");
   ros::NodeHandle nh;  
   nh_glob = &nh;
-
-  msg_Ku.data.assign(4,0.0);
+  
   msg_robot_geometry.data.assign(2,0.0);
 
   ros::Publisher pub_reset_odo_local = nh.advertise<std_msgs::Bool>("reset_odo",20);
