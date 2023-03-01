@@ -8,8 +8,6 @@
 ros::NodeHandle* nh_glob;
 
 ros::Publisher* pub_reset_odo;
-ros::Publisher* pub_Ku;
-ros::Publisher* pub_tuning_mode;
 ros::Publisher* pub_robot_geometry;
 
 typedef enum _msg
@@ -17,14 +15,14 @@ typedef enum _msg
   wheelRadius_mm,
   L1pL2_mm,
   reset_odo,
-  tuning_mode,
+ 
 
 }msg;
 
 
 std_msgs::Float32MultiArray msg_robot_geometry;
 std_msgs::Bool msg_reset_odo;
-std_msgs::Bool msg_tuning_mode;
+
 
 
 
@@ -48,10 +46,6 @@ void callback(robot_dynamic_param::paramConfig &config, uint32_t level) {
 	    msg_reset_odo.data = config.reset_odo;
 	    pub_reset_odo->publish(msg_reset_odo);
 	    break;
-	  case tuning_mode:
-	    msg_tuning_mode.data = config.tuning_mode;
-	    pub_tuning_mode->publish(msg_tuning_mode);
-	    break;
 
 	  
 	  default:
@@ -69,11 +63,9 @@ int main(int argc, char **argv) {
   msg_robot_geometry.data.assign(2,0.0);
 
   ros::Publisher pub_reset_odo_local = nh.advertise<std_msgs::Bool>("reset_odo",20);
-  ros::Publisher pub_tuning_mode_local = nh.advertise<std_msgs::Bool>("tuning_mode",20);
   ros::Publisher pub_robot_geometry_local = nh.advertise<std_msgs::Float32MultiArray>("robot_geometry",20);
   
   pub_reset_odo = &pub_reset_odo_local;
-  pub_tuning_mode = &pub_tuning_mode_local;
   pub_robot_geometry = &pub_robot_geometry_local;
 
 
