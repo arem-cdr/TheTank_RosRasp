@@ -2,9 +2,9 @@
   <rosparam command="load" file="$(find the_tank_ros_rasp)/param.yaml"></rosparam>
   <node pkg="rosserial_python" type="serial_node.py" name="serial_node" output="screen">
     <param name="port" value="/dev/ttyACM0"/>
-    <param name="baud" value="115200"/>
+    <param name="baud" value="57600"/>
   </node>
   <node pkg="robot_dynamic_param" type="server" name="robot_dynamic_param" />
-  <node pkg="tf" type="static_transform_publisher" name="laserscan_broadcaster" args="0 0 0 0 0 1 0 base_link laser_frame 100" />
+  <node pkg="tf" type="static_transform_publisher" name="laserscan_broadcaster" args="0 0 0 0 0 1 0 base_link laser 100" />
   <node pkg="rplidar_ros" type="rplidarNode" name="rplidar_handler" />
 </launch>
